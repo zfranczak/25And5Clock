@@ -17,9 +17,18 @@ const BreakTime = () => {
 
   return (
     <div className='container-break'>
-      <Increment count={count} handleIncrement={handleIncrement} />
-      <h2>BreakTime: {count} minutes</h2>
-      <Decrement count={count} handleDecrement={handleDecrement} />
+      <Increment
+        id='break-increment'
+        count={count}
+        handleIncrement={handleIncrement}
+      />
+      <h2 id='break-label'>BreakTime: </h2>
+      <h2 id='break-length'>{count} minutes</h2>
+      <Decrement
+        id='break-decrement'
+        count={count}
+        handleDecrement={handleDecrement}
+      />
     </div>
   );
 };

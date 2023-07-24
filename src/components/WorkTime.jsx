@@ -17,9 +17,18 @@ const WorkTime = () => {
 
   return (
     <div className='container-work'>
-      <Increment count={count} handleIncrement={handleIncrement} />
-      <h2>WorkTime: {count} minutes</h2>
-      <Decrement count={count} handleDecrement={handleDecrement} />
+      <Increment
+        id='session-increment'
+        count={count}
+        handleIncrement={handleIncrement}
+      />
+      <h2 id='session-label'>WorkTime: </h2>
+      <h2 id='session-length'>{count} minutes</h2>
+      <Decrement
+        id='session-decrement'
+        count={count}
+        handleDecrement={handleDecrement}
+      />
     </div>
   );
 };
