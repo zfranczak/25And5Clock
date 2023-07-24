@@ -3,6 +3,7 @@ import './App.css';
 import BreakTime from './components/BreakTime';
 import WorkTime from './components/workTime';
 import Timer from './components/timer';
+import Footer from './components/Footer';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,13 +16,14 @@ function App() {
           <WorkTime />
           <BreakTime />
         </div>
-        <Timer />
+        <Timer count={count} />
       </div>
       {/* <div className='card'>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
       </div> */}
+      <Footer />
     </>
   );
 }
