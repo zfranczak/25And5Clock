@@ -10,7 +10,9 @@ const WorkTime = ({ sessionCount, setSessionCount }) => {
   };
 
   const handleDecrement = () => {
-    setSessionCount(sessionCount - 1);
+    if (sessionCount > 1) {
+      setSessionCount(sessionCount - 1);
+    }
   };
 
   return (

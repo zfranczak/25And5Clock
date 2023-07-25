@@ -10,7 +10,9 @@ const BreakTime = ({ breakCount, setBreakCount }) => {
   };
 
   const handleDecrement = () => {
-    setBreakCount(breakCount - 1);
+    if (breakCount > 1) {
+      setBreakCount(breakCount - 1);
+    }
   };
 
   return (
