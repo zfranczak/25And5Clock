@@ -1,7 +1,7 @@
 // Decrement.jsx
 import React from 'react';
 
-const Decrement = ({ id, count, handleDecrement }) => {
+const Decrement = ({ id, handleDecrement }) => {
   return (
     <button id={id} onClick={handleDecrement}>
       DOWN

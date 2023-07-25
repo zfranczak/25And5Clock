@@ -1,12 +1,10 @@
 // BreakTime.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import Increment from './Increment';
 import Decrement from './Decrement';
 import '../styles/break-time.css';
 
-const BreakTime = () => {
-  const [breakCount, setBreakCount] = useState(5);
-
+const BreakTime = ({ breakCount, setBreakCount }) => {
   const handleIncrement = () => {
     setBreakCount(breakCount + 1);
   };
