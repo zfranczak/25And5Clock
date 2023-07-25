@@ -5,28 +5,28 @@ import Decrement from './Decrement';
 import '../styles/work-time.css';
 
 const WorkTime = () => {
-  const [count, setCount] = useState(25);
+  const [workCount, setWorkCount] = useState(25);
 
   const handleIncrement = () => {
-    setCount(count + 1);
+    setWorkCount(workCount + 1);
   };
 
   const handleDecrement = () => {
-    setCount(count - 1);
+    setWorkCount(workCount - 1);
   };
 
   return (
     <div className='container-work'>
       <Increment
         id='session-increment'
-        count={count}
+        count={workCount}
         handleIncrement={handleIncrement}
       />
       <h2 id='session-label'>WorkTime: </h2>
-      <h2 id='session-length'>{count} minutes</h2>
+      <h2 id='session-length'>{workCount} minutes</h2>
       <Decrement
         id='session-decrement'
-        count={count}
+        count={workCount}
         handleDecrement={handleDecrement}
       />
     </div>

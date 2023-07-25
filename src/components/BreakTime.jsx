@@ -5,28 +5,28 @@ import Decrement from './Decrement';
 import '../styles/break-time.css';
 
 const BreakTime = () => {
-  const [count, setCount] = useState(5);
+  const [breakCount, setBreakCount] = useState(5);
 
   const handleIncrement = () => {
-    setCount(count + 1);
+    setBreakCount(breakCount + 1);
   };
 
   const handleDecrement = () => {
-    setCount(count - 1);
+    setBreakCount(breakCount - 1);
   };
 
   return (
     <div className='container-break'>
       <Increment
         id='break-increment'
-        count={count}
+        count={breakCount}
         handleIncrement={handleIncrement}
       />
       <h2 id='break-label'>BreakTime: </h2>
-      <h2 id='break-length'>{count} minutes</h2>
+      <h2 id='break-length'>{breakCount} minutes</h2>
       <Decrement
         id='break-decrement'
-        count={count}
+        count={breakCount}
         handleDecrement={handleDecrement}
       />
     </div>

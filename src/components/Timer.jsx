@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Timer = () => {
+const Timer = ({ count }) => {
   return (
     <div className='container-timer'>
       <h2>Timer</h2>
-      <div className='countdown-clock'>00:00</div>
+      <div className='countdown-clock'>{count}</div>
     </div>
   );
 };
