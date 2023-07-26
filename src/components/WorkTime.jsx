@@ -6,7 +6,7 @@ import '../styles/work-time.css';
 
 const WorkTime = ({ sessionCount, setSessionCount }) => {
   const handleIncrement = () => {
-    if (sessionCount < 61) {
+    if (sessionCount < 60) {
       setSessionCount(sessionCount + 1);
     }
   };

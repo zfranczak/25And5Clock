@@ -6,7 +6,7 @@ import '../styles/break-time.css';
 
 const BreakTime = ({ breakCount, setBreakCount }) => {
   const handleIncrement = () => {
-    if (breakCount < 61) {
+    if (breakCount < 60) {
       setBreakCount(breakCount + 1);
     }
   };
