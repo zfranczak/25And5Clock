@@ -6,7 +6,9 @@ import '../styles/break-time.css';
 
 const BreakTime = ({ breakCount, setBreakCount }) => {
   const handleIncrement = () => {
-    setBreakCount(breakCount + 1);
+    if (breakCount < 61) {
+      setBreakCount(breakCount + 1);
+    }
   };
 
   const handleDecrement = () => {
@@ -23,7 +25,10 @@ const BreakTime = ({ breakCount, setBreakCount }) => {
         handleIncrement={handleIncrement}
       />
       <h2 id='break-label'>BreakTime: </h2>
-      <h2 id='break-length'>{breakCount} minutes</h2>
+      <span>
+        <h2 id='break-length'>{breakCount}</h2>
+        <h2> Minutes</h2>
+      </span>
       <Decrement
         id='break-decrement'
         count={breakCount}

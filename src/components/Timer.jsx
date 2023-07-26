@@ -29,6 +29,8 @@ const Timer = ({ sessionCount, breakCount }) => {
       .padStart(2, '0')}`;
   };
 
+  const timeLeft = formatTime(remainingSeconds);
+
   const handleStartPause = () => {
     setTimerActive((prevActive) => !prevActive);
   };
@@ -40,13 +42,10 @@ const Timer = ({ sessionCount, breakCount }) => {
 
   return (
     <div className='container-timer'>
-      <h2 id='timer-label'>Timer: {formatTime(remainingSeconds)}</h2>
-      <div className='countdown-clock' id='time-left'>
-        {/* Display the formatted time */}
-        {formatTime(remainingSeconds)}
-      </div>
+      <h2 id='timer-label'>Time Left</h2>
+      <h2 id='time-left'>{timeLeft}</h2>
       {/* Start/Pause button */}
-      <button onClick={handleStartPause}>
+      <button id='start_stop' onClick={handleStartPause}>
         {timerActive ? 'Pause' : 'Start'}
       </button>
       {/* Reset button */}
@@ -54,5 +53,4 @@ const Timer = ({ sessionCount, breakCount }) => {
     </div>
   );
 };
-
 export default Timer;
