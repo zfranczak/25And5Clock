@@ -66,6 +66,7 @@ function App() {
     setSessionCount(defaultSessionCount);
     setTimerActive(false);
     setRemainingSeconds(defaultSessionCount * 60);
+    setWorkOrBreak('work');
   };
 
   return (
