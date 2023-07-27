@@ -4,15 +4,15 @@ import Increment from './Increment';
 import Decrement from './Decrement';
 import '../styles/break-time.css';
 
-const BreakTime = ({ breakCount, setBreakCount }) => {
+const BreakTime = ({ timerActive, breakCount, setBreakCount }) => {
   const handleIncrement = () => {
-    if (breakCount < 60) {
+    if (!timerActive && breakCount < 60) {
       setBreakCount(breakCount + 1);
     }
   };
 
   const handleDecrement = () => {
-    if (breakCount > 1) {
+    if (!timerActive && breakCount > 1) {
       setBreakCount(breakCount - 1);
     }
   };

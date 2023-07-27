@@ -1,0 +1,11 @@
+.clock-type-work {
+  background-color: red;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
+
+.clock-type-break {
+  background-color: green;
+  text-transform: uppercase;
+  border-radius: 15px;
+}

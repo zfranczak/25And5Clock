@@ -4,15 +4,15 @@ import Increment from './Increment';
 import Decrement from './Decrement';
 import '../styles/work-time.css';
 
-const WorkTime = ({ sessionCount, setSessionCount }) => {
+const WorkTime = ({ timerActive, sessionCount, setSessionCount }) => {
   const handleIncrement = () => {
-    if (sessionCount < 60) {
+    if (!timerActive && sessionCount < 60) {
       setSessionCount(sessionCount + 1);
     }
   };
 
   const handleDecrement = () => {
-    if (sessionCount > 1) {
+    if (!timerActive && sessionCount > 1) {
       setSessionCount(sessionCount - 1);
     }
   };
@@ -23,6 +23,7 @@ const WorkTime = ({ sessionCount, setSessionCount }) => {
         id='session-increment'
         count={sessionCount}
         handleIncrement={handleIncrement}
+        disabled={timerActive}
       />
       <h2 id='session-label'>WorkTime: </h2>
       <span>
@@ -33,6 +34,7 @@ const WorkTime = ({ sessionCount, setSessionCount }) => {
         id='session-decrement'
         count={sessionCount}
         handleDecrement={handleDecrement}
+        disabled={timerActive}
       />
     </div>
   );

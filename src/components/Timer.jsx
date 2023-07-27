@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/timer.css';
 
 const Timer = ({ sessionCount, breakCount }) => {
   const [remainingSeconds, setRemainingSeconds] = useState(sessionCount * 60);
@@ -18,14 +19,18 @@ const Timer = ({ sessionCount, breakCount }) => {
       }, 1000);
     } else if (remainingSeconds === 0) {
       if (workOrBreak === 'work') {
-        setRemainingSeconds(breakCount * 60);
-        setTimerActive(true);
-        setWorkOrBreak('break');
+        setTimeout(() => {
+          setRemainingSeconds(breakCount * 60);
+          setTimerActive(true);
+          setWorkOrBreak('break');
+        }, 1000);
         return;
       } else {
-        setRemainingSeconds(sessionCount * 60);
-        setWorkOrBreak('work');
-        setTimerActive(false);
+        setTimeout(() => {
+          setRemainingSeconds(sessionCount * 60);
+          setWorkOrBreak('work');
+          setTimerActive(true);
+        }, 1000);
         return;
       }
     }
@@ -55,9 +60,11 @@ const Timer = ({ sessionCount, breakCount }) => {
 
   return (
     <div className='container-timer'>
-      <h2 id='timer-label'>Time Left</h2>
+      <h2>Time Left</h2>
       <h2 id='time-left'>{timeLeft}</h2>
-      <h4>{workOrBreak}</h4>
+      <h4 id='timer-label' className={`clock-type-${workOrBreak}`}>
+        {workOrBreak}
+      </h4>
       {/* Start/Pause button */}
       <button id='start_stop' onClick={handleStartPause}>
         {timerActive ? 'Pause' : 'Start'}
