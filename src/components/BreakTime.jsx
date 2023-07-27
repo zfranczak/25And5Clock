@@ -23,6 +23,7 @@ const BreakTime = ({ timerActive, breakCount, setBreakCount }) => {
         id='break-increment'
         count={breakCount}
         handleIncrement={handleIncrement}
+        disabled={timerActive}
       />
       <h2 id='break-label'>BreakTime: </h2>
       <span>
@@ -33,6 +34,7 @@ const BreakTime = ({ timerActive, breakCount, setBreakCount }) => {
         id='break-decrement'
         count={breakCount}
         handleDecrement={handleDecrement}
+        disabled={timerActive}
       />
     </div>
   );

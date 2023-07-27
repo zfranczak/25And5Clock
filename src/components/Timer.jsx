@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/timer.css';
 
-const Timer = ({ sessionCount, breakCount }) => {
-  const [remainingSeconds, setRemainingSeconds] = useState(sessionCount * 60);
-  const [timerActive, setTimerActive] = useState(false);
+const playAudio = () => {
+  const audioElement = document.getElementById('beep');
+  if (audioElement) {
+    audioElement.currentTime = 0; // Reset the audio to the beginning
+    audioElement.play();
+  }
+};
+
+const Timer = ({
+  timerActive,
+  setTimerActive,
+  sessionCount,
+  breakCount,
+  handleReset,
+  remainingSeconds,
+  setRemainingSeconds,
+}) => {
   const [workOrBreak, setWorkOrBreak] = useState('work');
 
   useEffect(() => {
@@ -23,6 +37,7 @@ const Timer = ({ sessionCount, breakCount }) => {
           setRemainingSeconds(breakCount * 60);
           setTimerActive(true);
           setWorkOrBreak('break');
+          playAudio();
         }, 1000);
         return;
       } else {
@@ -30,6 +45,7 @@ const Timer = ({ sessionCount, breakCount }) => {
           setRemainingSeconds(sessionCount * 60);
           setWorkOrBreak('work');
           setTimerActive(true);
+          playAudio();
         }, 1000);
         return;
       }
@@ -53,11 +69,6 @@ const Timer = ({ sessionCount, breakCount }) => {
     setTimerActive((prevActive) => !prevActive);
   };
 
-  const handleReset = () => {
-    setRemainingSeconds(sessionCount * 60);
-    setTimerActive(false);
-  };
-
   return (
     <div className='container-timer'>
       <h2>Time Left</h2>
@@ -69,8 +80,7 @@ const Timer = ({ sessionCount, breakCount }) => {
       <button id='start_stop' onClick={handleStartPause}>
         {timerActive ? 'Pause' : 'Start'}
       </button>
-      {/* Reset button */}
-      <button onClick={handleReset}>Reset</button>
+      <audio id='beep' src='/microwave-timer-117077.mp3' preload='auto' />
     </div>
   );
 };

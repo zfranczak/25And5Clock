@@ -12,10 +12,19 @@ function App() {
 
   const [breakCount, setBreakCount] = useState(defaultBreakCount);
   const [sessionCount, setSessionCount] = useState(defaultSessionCount);
+  const [timerActive, setTimerActive] = useState(false);
+  const [remainingSeconds, setRemainingSeconds] = useState(sessionCount * 60);
 
   const handleReset = () => {
+    const audioElement = document.getElementById('beep');
+    if (audioElement) {
+      audioElement.pause();
+      audioElement.currentTime = 0;
+    }
     setBreakCount(defaultBreakCount);
     setSessionCount(defaultSessionCount);
+    setTimerActive(false);
+    setRemainingSeconds(defaultSessionCount * 60);
   };
 
   return (
@@ -26,10 +35,25 @@ function App() {
           <WorkTime
             sessionCount={sessionCount}
             setSessionCount={setSessionCount}
+            timerActive={timerActive}
+            setTimerActive={setTimerActive}
           />
-          <BreakTime breakCount={breakCount} setBreakCount={setBreakCount} />
+          <BreakTime
+            breakCount={breakCount}
+            setBreakCount={setBreakCount}
+            timerActive={timerActive}
+            setTimerActive={setTimerActive}
+          />
         </div>
-        <Timer sessionCount={sessionCount} breakCount={breakCount} />
+        <Timer
+          sessionCount={sessionCount}
+          breakCount={breakCount}
+          timerActive={timerActive}
+          setTimerActive={setTimerActive}
+          handleReset={handleReset}
+          remainingSeconds={remainingSeconds}
+          setRemainingSeconds={setRemainingSeconds}
+        />
       </div>
 
       <button id='reset' onClick={handleReset}>
