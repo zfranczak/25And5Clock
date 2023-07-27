@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/timer.css';
 
-const playAudio = () => {
-  const audioElement = document.getElementById('beep');
-  if (audioElement) {
-    audioElement.currentTime = 0; // Reset the audio to the beginning
-    audioElement.play();
-  }
-};
-
 const Timer = ({
   timerActive,
   setTimerActive,
@@ -17,43 +9,11 @@ const Timer = ({
   handleReset,
   remainingSeconds,
   setRemainingSeconds,
+  workOrBreak,
 }) => {
-  const [workOrBreak, setWorkOrBreak] = useState('work');
-
   useEffect(() => {
     setRemainingSeconds(sessionCount * 60);
   }, [sessionCount]);
-
-  useEffect(() => {
-    let interval;
-
-    if (timerActive && remainingSeconds > 0) {
-      interval = setInterval(() => {
-        setRemainingSeconds((prevSeconds) => prevSeconds - 1);
-      }, 1000);
-    } else if (remainingSeconds === 0) {
-      if (workOrBreak === 'work') {
-        setTimeout(() => {
-          setRemainingSeconds(breakCount * 60);
-          setTimerActive(true);
-          setWorkOrBreak('break');
-          playAudio();
-        }, 1000);
-        return;
-      } else {
-        setTimeout(() => {
-          setRemainingSeconds(sessionCount * 60);
-          setWorkOrBreak('work');
-          setTimerActive(true);
-          playAudio();
-        }, 1000);
-        return;
-      }
-    }
-
-    // Clean up the interval when the component unmounts or when the timer is paused/stopped
-    return () => clearInterval(interval);
-  }, [timerActive, remainingSeconds]);
 
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);

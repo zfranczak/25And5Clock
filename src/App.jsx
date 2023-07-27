@@ -1,10 +1,20 @@
 // App.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import BreakTime from './components/BreakTime';
 import WorkTime from './components/WorkTime';
 import Timer from './components/Timer';
 import Footer from './components/Footer';
+
+const playAudio = () => {
+  const audioElement = document.getElementById('beep');
+  if (audioElement) {
+    audioElement.currentTime = 0; // Reset the audio to the beginning
+    audioElement.play();
+  }
+};
+
+let interval;
 
 function App() {
   const defaultBreakCount = 5;
@@ -14,6 +24,35 @@ function App() {
   const [sessionCount, setSessionCount] = useState(defaultSessionCount);
   const [timerActive, setTimerActive] = useState(false);
   const [remainingSeconds, setRemainingSeconds] = useState(sessionCount * 60);
+  const [workOrBreak, setWorkOrBreak] = useState('work');
+
+  useEffect(() => {
+    if (timerActive && remainingSeconds > 0) {
+      interval = setInterval(() => {
+        setRemainingSeconds((prevSeconds) => prevSeconds - 1);
+      }, 1000);
+    } else if (remainingSeconds === 0) {
+      if (workOrBreak === 'work') {
+        setTimeout(() => {
+          setRemainingSeconds(breakCount * 60);
+          setTimerActive(true);
+          setWorkOrBreak('break');
+          playAudio();
+        }, 1000);
+        return;
+      } else {
+        setTimeout(() => {
+          setRemainingSeconds(sessionCount * 60);
+          setWorkOrBreak('work');
+          setTimerActive(true);
+          playAudio();
+        }, 1000);
+        return;
+      }
+    }
+
+    return () => clearInterval(interval);
+  }, [timerActive, remainingSeconds]);
 
   const handleReset = () => {
     const audioElement = document.getElementById('beep');
@@ -21,6 +60,8 @@ function App() {
       audioElement.pause();
       audioElement.currentTime = 0;
     }
+    clearInterval(interval);
+
     setBreakCount(defaultBreakCount);
     setSessionCount(defaultSessionCount);
     setTimerActive(false);
@@ -53,6 +94,7 @@ function App() {
           handleReset={handleReset}
           remainingSeconds={remainingSeconds}
           setRemainingSeconds={setRemainingSeconds}
+          workOrBreak={workOrBreak}
         />
       </div>
 
