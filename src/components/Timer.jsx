@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 const Timer = ({ sessionCount, breakCount }) => {
   const [remainingSeconds, setRemainingSeconds] = useState(sessionCount * 60);
   const [timerActive, setTimerActive] = useState(false);
+  const [workOrBreak, setWorkOrBreak] = useState('work');
+
+  useEffect(() => {
+    setRemainingSeconds(sessionCount * 60);
+  }, [sessionCount]);
 
   useEffect(() => {
     let interval;
@@ -12,9 +17,17 @@ const Timer = ({ sessionCount, breakCount }) => {
         setRemainingSeconds((prevSeconds) => prevSeconds - 1);
       }, 1000);
     } else if (remainingSeconds === 0) {
-      // Add logic here for when the timer reaches 0
-      console.log('Timer completed!');
-      setTimerActive(false);
+      if (workOrBreak === 'work') {
+        setRemainingSeconds(breakCount * 60);
+        setTimerActive(true);
+        setWorkOrBreak('break');
+        return;
+      } else {
+        setRemainingSeconds(sessionCount * 60);
+        setWorkOrBreak('work');
+        setTimerActive(false);
+        return;
+      }
     }
 
     // Clean up the interval when the component unmounts or when the timer is paused/stopped
@@ -44,6 +57,7 @@ const Timer = ({ sessionCount, breakCount }) => {
     <div className='container-timer'>
       <h2 id='timer-label'>Time Left</h2>
       <h2 id='time-left'>{timeLeft}</h2>
+      <h4>{workOrBreak}</h4>
       {/* Start/Pause button */}
       <button id='start_stop' onClick={handleStartPause}>
         {timerActive ? 'Pause' : 'Start'}
