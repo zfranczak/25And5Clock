@@ -6,7 +6,7 @@
 }
 
 .clock-type-break {
-  border: 3px dashed rgb(14, 230, 14);
+  border: 3px outset rgb(14, 230, 14);
   color: rgb(99, 182, 99);
   text-transform: uppercase;
   border-radius: 15px;

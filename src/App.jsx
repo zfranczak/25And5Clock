@@ -71,40 +71,42 @@ function App() {
 
   return (
     <>
-      <h1 className='title'>25 & 5 Clock</h1>
-      <div className='container'>
-        <div className='set-time'>
-          <WorkTime
-            sessionCount={sessionCount}
-            setSessionCount={setSessionCount}
-            timerActive={timerActive}
-            setTimerActive={setTimerActive}
-          />
-          <BreakTime
-            breakCount={breakCount}
-            setBreakCount={setBreakCount}
-            timerActive={timerActive}
-            setTimerActive={setTimerActive}
-          />
+      <div className={`main-container-${workOrBreak}`}>
+        <h1 className='title'>25 & 5 Clock</h1>
+        <div className='container'>
+          <div className='set-time'>
+            <WorkTime
+              sessionCount={sessionCount}
+              setSessionCount={setSessionCount}
+              timerActive={timerActive}
+              setTimerActive={setTimerActive}
+            />
+            <BreakTime
+              breakCount={breakCount}
+              setBreakCount={setBreakCount}
+              timerActive={timerActive}
+              setTimerActive={setTimerActive}
+            />
+          </div>
+          <div className='timer-box'>
+            <Timer
+              sessionCount={sessionCount}
+              breakCount={breakCount}
+              timerActive={timerActive}
+              setTimerActive={setTimerActive}
+              handleReset={handleReset}
+              remainingSeconds={remainingSeconds}
+              setRemainingSeconds={setRemainingSeconds}
+              workOrBreak={workOrBreak}
+            />
+          </div>
         </div>
-        <div className='timer-box'>
-          <Timer
-            sessionCount={sessionCount}
-            breakCount={breakCount}
-            timerActive={timerActive}
-            setTimerActive={setTimerActive}
-            handleReset={handleReset}
-            remainingSeconds={remainingSeconds}
-            setRemainingSeconds={setRemainingSeconds}
-            workOrBreak={workOrBreak}
-          />
-        </div>
-      </div>
 
-      <button id='reset' onClick={handleReset}>
-        Reset
-      </button>
-      <Footer />
+        <button id='reset' onClick={handleReset}>
+          Reset
+        </button>
+        <Footer />
+      </div>
     </>
   );
 }

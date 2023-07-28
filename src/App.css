@@ -35,3 +35,17 @@
 .read-the-docs {
   color: #888;
 }
+
+.main-container-work {
+  border: 3px dashed rgb(255, 64, 0);
+  padding: 10px;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
+
+.main-container-break {
+  border: 3px outset rgb(14, 230, 14);
+  padding: 10px;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
