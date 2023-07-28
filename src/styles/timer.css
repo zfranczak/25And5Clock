@@ -1,5 +1,5 @@
 .clock-type-work {
-  border: 3px dashed rgb(255, 64, 0);
+  border: 3px solid rgb(255, 64, 0);
   color: rgb(255, 64, 0);
   text-transform: uppercase;
   border-radius: 15px;

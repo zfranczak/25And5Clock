@@ -5,8 +5,6 @@ const Timer = ({
   timerActive,
   setTimerActive,
   sessionCount,
-  breakCount,
-  handleReset,
   remainingSeconds,
   setRemainingSeconds,
   workOrBreak,
@@ -25,10 +23,6 @@ const Timer = ({
 
   const timeLeft = formatTime(remainingSeconds);
 
-  const handleStartPause = () => {
-    setTimerActive((prevActive) => !prevActive);
-  };
-
   return (
     <div className='container-timer'>
       <h2>Time Left</h2>
@@ -37,9 +31,7 @@ const Timer = ({
         {workOrBreak}
       </h2>
       {/* Start/Pause button */}
-      <button id='start_stop' onClick={handleStartPause}>
-        {timerActive ? 'Pause' : 'Start'}
-      </button>
+
       <audio id='beep' src='/microwave-timer-117077.mp3' preload='auto' />
     </div>
   );

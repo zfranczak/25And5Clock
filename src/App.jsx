@@ -69,6 +69,10 @@ function App() {
     setWorkOrBreak('work');
   };
 
+  const handleStartPause = () => {
+    setTimerActive((prevActive) => !prevActive);
+  };
+
   return (
     <>
       <div className={`main-container-${workOrBreak}`}>
@@ -101,10 +105,18 @@ function App() {
             />
           </div>
         </div>
-
-        <button id='reset' onClick={handleReset}>
-          Reset
-        </button>
+        <div className='btns'>
+          <button
+            className='function-btns'
+            id='start_stop'
+            onClick={handleStartPause}
+          >
+            {timerActive ? 'Pause' : 'Start'}
+          </button>
+          <button className='function-btns' id='reset' onClick={handleReset}>
+            Reset
+          </button>
+        </div>
         <Footer />
       </div>
     </>
