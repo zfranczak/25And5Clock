@@ -50,10 +50,12 @@
   padding: 10px;
   text-transform: uppercase;
   border-radius: 15px;
+  /* background-color: rgb(57, 46, 40); */
 }
 
 .main-container-break {
   border: 3px outset rgb(14, 230, 14);
+  color: white;
   padding: 10px;
   text-transform: uppercase;
   border-radius: 15px;
