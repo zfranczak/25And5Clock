@@ -1,3 +1,5 @@
 .container-break {
   margin: 0 20px 0 20px;
+  display: flex;
+  flex-direction: column;
 }

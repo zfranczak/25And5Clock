@@ -1,11 +1,13 @@
 .clock-type-work {
-  background-color: red;
+  border: 3px dashed rgb(255, 64, 0);
+  color: rgb(255, 64, 0);
   text-transform: uppercase;
   border-radius: 15px;
 }
 
 .clock-type-break {
-  background-color: green;
+  border: 3px dashed rgb(14, 230, 14);
+  color: rgb(99, 182, 99);
   text-transform: uppercase;
   border-radius: 15px;
 }

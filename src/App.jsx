@@ -71,7 +71,7 @@ function App() {
 
   return (
     <>
-      <h1>25 & 5 Clock</h1>
+      <h1 className='title'>25 & 5 Clock</h1>
       <div className='container'>
         <div className='set-time'>
           <WorkTime
@@ -87,16 +87,18 @@ function App() {
             setTimerActive={setTimerActive}
           />
         </div>
-        <Timer
-          sessionCount={sessionCount}
-          breakCount={breakCount}
-          timerActive={timerActive}
-          setTimerActive={setTimerActive}
-          handleReset={handleReset}
-          remainingSeconds={remainingSeconds}
-          setRemainingSeconds={setRemainingSeconds}
-          workOrBreak={workOrBreak}
-        />
+        <div className='timer-box'>
+          <Timer
+            sessionCount={sessionCount}
+            breakCount={breakCount}
+            timerActive={timerActive}
+            setTimerActive={setTimerActive}
+            handleReset={handleReset}
+            remainingSeconds={remainingSeconds}
+            setRemainingSeconds={setRemainingSeconds}
+            workOrBreak={workOrBreak}
+          />
+        </div>
       </div>
 
       <button id='reset' onClick={handleReset}>

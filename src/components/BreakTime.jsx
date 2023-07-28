@@ -19,23 +19,25 @@ const BreakTime = ({ timerActive, breakCount, setBreakCount }) => {
 
   return (
     <div className='container-break'>
-      <Increment
-        id='break-increment'
-        count={breakCount}
-        handleIncrement={handleIncrement}
-        disabled={timerActive}
-      />
-      <h2 id='break-label'>BreakTime: </h2>
+      <h2 id='break-label'>Break Time: </h2>
       <span>
         <h2 id='break-length'>{breakCount}</h2>
         <h2> Minutes</h2>
       </span>
-      <Decrement
-        id='break-decrement'
-        count={breakCount}
-        handleDecrement={handleDecrement}
-        disabled={timerActive}
-      />
+      <span>
+        <Increment
+          id='break-increment'
+          count={breakCount}
+          handleIncrement={handleIncrement}
+          disabled={timerActive}
+        />
+        <Decrement
+          id='break-decrement'
+          count={breakCount}
+          handleDecrement={handleDecrement}
+          disabled={timerActive}
+        />
+      </span>
     </div>
   );
 };

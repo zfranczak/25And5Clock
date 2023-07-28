@@ -3,7 +3,7 @@ import React from 'react';
 
 const Decrement = ({ id, handleDecrement }) => {
   return (
-    <button id={id} onClick={handleDecrement}>
+    <button className='btn' id={id} onClick={handleDecrement}>
       -
     </button>
   );

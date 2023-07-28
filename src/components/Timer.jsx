@@ -33,9 +33,9 @@ const Timer = ({
     <div className='container-timer'>
       <h2>Time Left</h2>
       <h2 id='time-left'>{timeLeft}</h2>
-      <h4 id='timer-label' className={`clock-type-${workOrBreak}`}>
+      <h2 id='timer-label' className={`clock-type-${workOrBreak}`}>
         {workOrBreak}
-      </h4>
+      </h2>
       {/* Start/Pause button */}
       <button id='start_stop' onClick={handleStartPause}>
         {timerActive ? 'Pause' : 'Start'}

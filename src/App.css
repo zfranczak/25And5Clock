@@ -5,12 +5,20 @@
   text-align: center;
 }
 
+.title {
+  margin: 0 auto;
+}
+
+.btn {
+  border: 1px white solid;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  border: 1px white solid;
+
   padding: 20px;
 }
 
